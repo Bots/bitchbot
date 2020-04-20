@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 const Command = require('./models/commandSchema')
 const bot = new Discord.Client()
 
-//
+// get values from .env
 const TOKEN = process.env.DISCORD_API_TOKEN
 const connectionString = process.env.MONGODB_CONNECTION_STRING
 
