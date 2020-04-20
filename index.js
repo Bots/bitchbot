@@ -7,6 +7,9 @@ const bot = new Discord.Client()
 const TOKEN = process.env.DISCORD_API_TOKEN
 const connectionString = process.env.MONGODB_CONNECTION_STRING
 
+// Assign the port
+const port = process.env.port 
+
 // Assign the prefix for commands
 const PREFIX = '!'
 
