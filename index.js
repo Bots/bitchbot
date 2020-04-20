@@ -1,3 +1,4 @@
+require('dotenv').config()
 const Discord = require('discord.js')
 const mongoose = require('mongoose')
 const Command = require('./models/commandSchema')
@@ -6,9 +7,6 @@ const bot = new Discord.Client()
 // get values from .env
 const TOKEN = process.env.DISCORD_API_TOKEN
 const connectionString = process.env.MONGODB_CONNECTION_STRING
-
-// Assign the port
-const port = process.env.port 
 
 // Assign the prefix for commands
 const PREFIX = '!'
@@ -91,7 +89,7 @@ async function run() {
           var cmd = await Command.findOne({commandName: discordCommandName})
 
           // Delete the document and reply that it has been deleted
-          Command.findByIdAndDelete(cmd._id, (err,todo) => {
+          Command.findByIdAndDelete(cmd._id, (err) => {
             if(err) return console.error(err)
             msg.channel.send(`Command ${discordCommandName} has been deleted.`)
           })
@@ -122,7 +120,7 @@ async function run() {
           }
 
           // Edit the newly created command to the db
-          Command.findByIdAndUpdate(cmd._id, newDiscordCommand, {new: true}, function(err,model) {
+          Command.findByIdAndUpdate(cmd._id, newDiscordCommand, {new: true}, function(err) {
             if(err) return console.error(err)
             msg.channel.send(`Command ${discordCommandName} has been edited.`)
           })
