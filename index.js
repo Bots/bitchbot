@@ -1,4 +1,3 @@
-require('dotenv').config()
 const Discord = require('discord.js')
 const mongoose = require('mongoose')
 const Command = require('./models/commandSchema')
