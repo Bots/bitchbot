@@ -1,0 +1,17 @@
+{
+  "name": "bitchbot",
+  "version": "1.0.0",
+  "description": "A bot that responds with funny things that have been said",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "John Paul Wile",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^12.1.1",
+    "dotenv": "^8.2.0",
+    "mongoose": "^5.9.9",
+    "nodemon": "^2.0.3"
+  }
+}
