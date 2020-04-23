@@ -57,48 +57,31 @@ async function run() {
     // then convert the command to lowercase
     const discordCommand = args.shift().toLowerCase()
     
-    // Begin commands 
-    switch(discordCommand) {
-
-      case 'addcommand': {
-
-        break
-      }
-      case 'deletecommand': {
-
-        break
-      } 
-      
-      case 'editcommand': {
-        
-        break
-      }
-
-      case 'help': {
-
-        break
-      }
-      
-      // If not a hard-coded command, check if command is in the database
-      default: {
-        try {
+    // See if there is a command file in the commands folder
+    if(!bot.commands.has(discordCommand)) {
+      try {
         // find our object according to the name of the command
-          const cmd = await Command.findOne({commandName: discordCommand})
+        const cmd = await Command.findOne({commandName: discordCommand})
           
-          // Check if the results are null (no command was found), if so reply "command not found"
-          if(cmd === null) {
-            msg.channel.send('Command not found')
-          }
-
-          // If this is a command from the database, reply with the command content
-          if(discordCommand === cmd.commandName) {
-            msg.channel.send(cmd.command)
-          }
-        } catch (err) {
-          console.log(err)
+        // Check if the results are null (no command was found), if so reply "command not found"
+        if(cmd === null) {
+          msg.channel.send('Command not found')
         }
-        break
+
+        // If this is a command from the database, reply with the command content
+        if(discordCommand === cmd.commandName) {
+          msg.channel.send(cmd.command)
+        }
+      } catch (err) {
+          console.log(err)
       }
+    }
+
+    try {
+      bot.commands.get(discordCommand).execute(msg, args)
+    } catch (err) {
+      console.error(err)
+      msg.reply('There was an error trying to execute that command.')
     }
   })
 }
