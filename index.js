@@ -149,7 +149,7 @@ async function run() {
         // find our object according to the name of the command
           const cmd = await Command.findOne({commandName: discordCommand})
           
-          // Check if the results are null, if so reply "command not found"
+          // Check if the results are null (no command was found), if so reply "command not found"
           if(cmd === null) {
             msg.channel.send('Command not found')
           }
