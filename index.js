@@ -1,8 +1,17 @@
 require('dotenv').config()
 const Discord = require('discord.js')
 const mongoose = require('mongoose')
+const fs = require('fs')
 const Command = require('./models/commandSchema')
 const bot = new Discord.Client()
+bot.commands = new Discord.Collection
+
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'))
+
+for (const file of commandFiles) {
+  const command = require(`./commands/${file}`)
+  bot.commands.set(command.name, command)
+}
 
 // get values from .env
 const TOKEN = process.env.DISCORD_API_TOKEN
@@ -53,93 +62,20 @@ async function run() {
 
       case 'addcommand': {
 
-        // This pops the next arg off the array (the command name to be created) and makes it lowercase
-        const discordCommandName = args.shift().toLowerCase()
-
-        // Take the remaining arguments (the actual command to be created), beginning at zero, 
-        // and join them into a sentence
-        const discordCommandArgs = args.slice(0).join(' ');
-
-        // Log our variables, delete for production
-        console.log(`${discordCommand}, ${discordCommandName}, ${discordCommandArgs}`)
-
-        // Now that we have our 3 parts, create a new command
-        const newDiscordCommand = new Command({
-          _id: mongoose.Types.ObjectId(),
-          commandName: discordCommandName,
-          command: discordCommandArgs
-        })
-
-        // Save the newly created command to the db
-        newDiscordCommand.save(function (err, newDiscordCommand) {
-          if (err) return console.error(err)
-          console.log(`New command ${discordCommandName} created.`)
-          console.log(newDiscordCommand)
-          msg.channel.send(`Command ${discordCommandName} has been created.`)
-        })
         break
       }
       case 'deletecommand': {
 
-        // This pops the next arg off the array (the command name to be deleted) and makes it lowercase
-        const discordCommandName = args.shift().toLowerCase()
-        
-        try {
-          // Find our object according to the name of the command
-          var cmd = await Command.findOne({commandName: discordCommandName})
-
-          // Delete the document and reply that it has been deleted
-          Command.findByIdAndDelete(cmd._id, (err) => {
-            if(err) return console.error(err)
-            msg.channel.send(`Command ${discordCommandName} has been deleted.`)
-          })
-        } catch (err) {
-          console.log(err)
-        }
         break
       } 
       
       case 'editcommand': {
         
-        // This pops the next arg off the array (the command name to be edited) and makes it lowercase
-        const discordCommandName = args.shift().toLowerCase()
-
-        // Take the remaining arguments (the actual command to replace the original), beginning at zero, 
-        // and join them into a sentence
-        const discordCommandArgs = args.slice(0).join(' ');
-        
-        try {
-          // Find our object according to the name of the command
-          var cmd = await Command.findOne({commandName: discordCommandName})
-
-          // Now that we have our 3 parts, create an updated command
-          const newDiscordCommand = {
-            _id: cmd._id,
-            commandName: discordCommandName,
-            command: discordCommandArgs
-          }
-
-          // Edit the newly created command to the db
-          Command.findByIdAndUpdate(cmd._id, newDiscordCommand, {new: true}, function(err) {
-            if(err) return console.error(err)
-            msg.channel.send(`Command ${discordCommandName} has been edited.`)
-          })
-
-        } catch (err) {
-          console.error(err)
-        }  
         break
       }
 
       case 'help': {
 
-        // Create a help message when someone types !help
-        message = `Bitchbot help:
-        To create a command type !addCommand commandName new command goes here
-        To edit a command type !editCommand commandName new command goes here
-        To delete a command type !deleteCommand commandName
-        To execute a command just type !commandName`
-        msg.channel.send(message)
         break
       }
       
