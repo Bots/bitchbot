@@ -1,3 +1,6 @@
+const mongoose = require('mongoose')
+const Command = require('../models/commandSchema')
+
 module.exports = {
   name: 'addcommand',
   execute(msg, args) {
@@ -10,7 +13,7 @@ module.exports = {
     const discordCommandArgs = args.slice(0).join(' ');
 
     // Log our variables, delete for production
-    console.log(`${discordCommand}, ${discordCommandName}, ${discordCommandArgs}`)
+    //console.log(`${discordCommand}, ${discordCommandName}, ${discordCommandArgs}`)
 
     // Now that we have our 3 parts, create a new command
     const newDiscordCommand = new Command({

@@ -1,6 +1,8 @@
+const Command = require('../models/commandSchema')
+
 module.exports = {
   name: 'deletecommand',
-  execute(msg, args) {
+  async execute(msg, args) {
     
     // This pops the next arg off the array (the command name to be deleted) and makes it lowercase
     const discordCommandName = args.shift().toLowerCase()

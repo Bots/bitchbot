@@ -29,7 +29,10 @@ async function run() {
   bot.login(TOKEN)
 
   // Connect to Atlas DB
-  mongoose.connect(connectionString, {useNewUrlParser: true})
+  mongoose.connect(connectionString, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
 
   // Confirm db is logged in or throw connection error
   const db = mongoose.connection
@@ -66,11 +69,13 @@ async function run() {
         // Check if the results are null (no command was found), if so reply "command not found"
         if(cmd === null) {
           msg.channel.send('Command not found')
+          return
         }
 
         // If this is a command from the database, reply with the command content
         if(discordCommand === cmd.commandName) {
           msg.channel.send(cmd.command)
+          return
         }
       } catch (err) {
           console.log(err)
@@ -79,8 +84,8 @@ async function run() {
 
     try {
       bot.commands.get(discordCommand).execute(msg, args)
-    } catch (err) {
-      console.error(err)
+    } catch (error) {
+      console.error(error)
       msg.reply('There was an error trying to execute that command.')
     }
   })
