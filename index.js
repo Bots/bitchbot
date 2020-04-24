@@ -68,7 +68,7 @@ async function run() {
           
         // Check if the results are null (no command was found), if so reply "command not found"
         if(cmd === null) {
-          msg.channel.send('Command not found')
+          msg.channel.send('Command not found.')
           return
         }
 
