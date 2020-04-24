@@ -31,7 +31,8 @@ async function run() {
   // Connect to Atlas DB
   mongoose.connect(connectionString, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useCreateIndex: true
   })
 
   // Confirm db is logged in or throw connection error

@@ -3,12 +3,12 @@ const Command = require('../models/commandSchema')
 
 module.exports = {
   name: 'addcommand',
-  execute(msg, args) {
-    
-    // This pops the next arg off the array (the command name to be created) and makes it lowercase
-    const discordCommandName = args.shift().toLowerCase()
+  async execute(msg, args) {
 
-    // Take the remaining arguments (the actual command to be created), beginning at zero, 
+  // This pops the next arg off the array (the command name to be created) and makes it lowercase
+  const discordCommandName = args.shift().toLowerCase()
+
+    // If not, take the remaining arguments (the actual command to be created), beginning at zero, 
     // and join them into a sentence
     const discordCommandArgs = args.slice(0).join(' ');
 
@@ -24,10 +24,13 @@ module.exports = {
 
     // Save the newly created command to the db
     newDiscordCommand.save(function (err, newDiscordCommand) {
-      if (err) return console.error(err)
-      console.log(`New command ${discordCommandName} created.`)
-      console.log(newDiscordCommand)
-      msg.channel.send(`Command ${discordCommandName} has been created.`)
+      if (!err) {
+        msg.channel.send(`Command ${newDiscordCommand.commandName} was created.`)
+      } else if (err.name === 'MongoError' && err.code === 11000) {
+        msg.channel.send(`Command ${discordCommandName} already exists.`)
+      } else {
+        msg.channel.send(`Error creating command.`)
+      }
     })
   }
 }
