@@ -56,13 +56,17 @@ Once you have the bot running in your channel you can do the following commands:
 !editCommand commandName this is where you can edit a command that has already been created.
 ```
 ```
-!deleteCommand commandName ``` (deletes the command) 
+!deleteCommand commandName 
+``` (deletes the command) 
 ```
-!commandName should reply with the command that you set.
+!commandName
+``` (replies with the command that you set.)
 ```
+!btc
+``` (Returns the price of bitcoin and the percentage of change over the past day)
 ```
-!btc``` (Returns the price of bitcoin and the percentage of change over the past day)
-
+!urban query goes here
+``` (search Urban Dictionary for your query)
 
 ## Deployment
 
