@@ -7,7 +7,6 @@ module.exports = {
     // This pops the next arg off the array (the command name to be deleted) and makes it lowercase
     const discordCommandName = args.shift().toLowerCase()
         
-    // Make sure the command exists
     try {
       // Find our object according to the name of the command
       var cmd = await Command.findOne({commandName: discordCommandName})
