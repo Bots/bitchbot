@@ -17,8 +17,8 @@ You need to create a .env file in the root directory with the following things i
 ```
 DISCORD_API_TOKEN= Your discord api token goes here
 MONGODB_CONNECTION_STRING= This is a string that points to a mongoDb in the cloud. I am using MongoDb atlas to store my db
-BTC_VALUE_API_KEY= This is the API key for the bitcoin price command, you can get a key ['here'](https://coinmarketcap.com/api/)
-RAPIDAPI_KEY= This is another API key that is for the urban dictionary command. You can get one ['here'](https://rapidapi.com/community/api/urban-dictionary)
+BTC_VALUE_API_KEY= This is the API key for the bitcoin price command, you can get a key here (https://coinmarketcap.com/api/)
+RAPIDAPI_KEY= This is another API key that is for the urban dictionary command. You can get one here (https://rapidapi.com/community/api/urban-dictionary)
 ```
 
 ### Installing
