@@ -18,8 +18,13 @@ module.exports = {
   })
     // Change the data to json 
     .then(response => response.json())
+
+    // Delete any brackets in the response
+    //.then(res => res.toString().replace(/[[\]]/g,''))
+    .then(res => res.list[0].definition.replace(/[[\]]/g,''))
+
     // Get the first definition and display it in the server
-    .then(json => msg.channel.send(json.list[0].definition))
+    .then(json => msg.channel.send(json))
     .catch(err => console.error(err)) 
   }
 }
