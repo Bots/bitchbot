@@ -28,7 +28,7 @@ This is a step by step series of examples that tell you how to get a development
 First step is to clone the repo
 
 ```
-git clone https://github.com/Bots/discordbot.git
+git clone https://github.com/Bots/commandbot.git
 ```
 
 Then we need to install our dependencies
@@ -48,7 +48,7 @@ nodemon index.js
 Your bot should be up and running now.
 
 
-Once you have the bot running in your channel you can do the following commands:
+Once you have the bot running in your channel you can issue the following commands:
 
 ```
 !addCommand commandName this is what will be returned when you call the command, it can be just text or a URL.
