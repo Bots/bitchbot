@@ -50,23 +50,23 @@ Your bot should be up and running now.
 Once you have the bot running in your channel you can do the following commands:
 
 ```
-!addCommand commandName this is what will be returned it can be just text or a URL.
+!addCommand commandName this is what will be returned when you call the command, it can be just text or a URL.
 ```
 ```
 !editCommand commandName this is where you can edit a command that has already been created.
 ```
 ```
-!deleteCommand commandName 
-``` (deletes the command) 
+!deleteCommand commandName (deletes the command) 
+``` 
 ```
-!commandName
-``` (replies with the command that you set.)
+!commandName (replies with the command that you set.)
+``` 
 ```
-!btc
-``` (Returns the price of bitcoin and the percentage of change over the past day)
+!btc (Returns the price of bitcoin and the percentage of change over the past day)
+``` 
 ```
-!urban query goes here
-``` (search Urban Dictionary for your query)
+!urban query goes here (search Urban Dictionary for your query)
+```
 
 ## Deployment
 
@@ -82,15 +82,9 @@ Add additional notes about how to deploy this on a live system
 
 Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
 
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+* **John Paul Wile** - *Initial work* - [Bots](https://github.com/Bots)
 
 ## License
 
@@ -99,5 +93,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Acknowledgments
 
 * Hat tip to anyone whose code was used
-* Inspiration
-* etc
+
