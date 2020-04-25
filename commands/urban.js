@@ -19,8 +19,7 @@ module.exports = {
     // Change the data to json 
     .then(response => response.json())
 
-    // Delete any brackets in the response
-    //.then(res => res.toString().replace(/[[\]]/g,''))
+    // Get the first definition and delete any brackets in the response using a regex
     .then(res => res.list[0].definition.replace(/[[\]]/g,''))
 
     // Get the first definition and display it in the server
