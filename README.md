@@ -5,7 +5,7 @@ the price of bitcoin or grabbing a definition from urban dictionary. I am adding
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 To install this project just clone the repo and then do an npm install in the folder that is downloaded. That will install 
 all dependencies for the project.
@@ -17,8 +17,8 @@ You need to create a .env file in the root directory with the following things i
 ```
 DISCORD_API_TOKEN= Your discord api token goes here
 MONGODB_CONNECTION_STRING= This is a string that points to a mongoDb in the cloud. I am using MongoDb atlas to store my db
-BTC_VALUE_API_KEY= This is the API key for the bitcoin price command, you can get a key [here](https://coinmarketcap.com/api/)
-RAPIDAPI_KEY= This is another API key that is for the urban dictionary command. You can get one [here](https://rapidapi.com/community/api/urban-dictionary)
+BTC_VALUE_API_KEY= This is the API key for the bitcoin price command, you can get a key here (https://coinmarketcap.com/api/)
+RAPIDAPI_KEY= This is another API key that is for the urban dictionary command. You can get one here (https://rapidapi.com/community/api/urban-dictionary)
 ```
 
 ### Installing
@@ -47,6 +47,7 @@ nodemon index.js
 
 Your bot should be up and running now.
 
+
 Once you have the bot running in your channel you can do the following commands:
 
 ```
@@ -68,19 +69,17 @@ Once you have the bot running in your channel you can do the following commands:
 !urban query goes here (search Urban Dictionary for your query)
 ```
 
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [NodeJs](https://nodejs.org/en/download/) - The javascript framework used
+* [MongoDB-Atlas](https://www.mongodb.com/cloud/atlas) - The cloud database used
+* [btc-value](https://www.npmjs.com/package/btc-value) - The bitcoin API
+* [Urban-Dictionary](https://rapidapi.com/community/api/urban-dictionary) - The Urban Dictionary API
+
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+Pull requests are welcomed.
 
 ## Authors
 
