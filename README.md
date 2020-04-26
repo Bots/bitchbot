@@ -1,7 +1,7 @@
 # CommandBot
 
 This is a discord bot that allows for adding custom commands to your server and a few other goodies like checking
-the price of bitcoin or grabbing a definition from urban dictionary. I am adding new features and commands every day.
+the price of bitcoin or grabbing a definition from urban dictionary. It is a work in progress and I am still adding new features and commands.
 
 ## Getting Started
 
