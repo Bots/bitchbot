@@ -1,26 +1,14 @@
-const btcValue = require('btc-value')
+const fetch = require('node-fetch')
 
 module.exports = {
   name: 'btc',
   async execute(msg, args) {
+    const cmcApiKey = process.env.CMC_PRO_API_KEY
 
-    btcValue.setApiKey(process.env.BTC_VALUE_API_KEY)
-    let percentage = ''
-
-    try {
-      await btcValue.getPercentageChangeLastDay().then(percent => {
-        percentage = Math.trunc(percent)
-      })
-    } catch(err) {
-      console.error(err)
-    }
-
-    try {
-      await btcValue().then(value => {
-        msg.channel.send(`Current bitcoin value is $${value}, there has been a ${percentage}% change in the last day.`)
-      })
-    } catch(err) {
-      console.error(err)
-    }
+    fetch(`https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=BTC&CMC_PRO_API_KEY=${cmcApiKey}`)
+    .then(resp => resp.json())
+    .then(data => {
+      msg.channel.send(`Current Bitcoin price is $${Math.trunc(data.data.BTC.quote.USD.price)}, There has been a ${Math.trunc(data.data.BTC.quote.USD.percent_change_24h)} percent change in the last 24 hours`)
+    })
   }
 }

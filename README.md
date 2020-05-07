@@ -17,7 +17,7 @@ You need to create a .env file in the root directory with the following things i
 ```
 DISCORD_API_TOKEN= Your discord api token goes here
 MONGODB_CONNECTION_STRING= This is a string that points to a mongoDb in the cloud. I am using MongoDb atlas to store my db
-BTC_VALUE_API_KEY= This is the API key for the bitcoin price command, you can get a key here (https://coinmarketcap.com/api/)
+CMC_PRO_API_KEY= This is the API key for the bitcoin price command, you can get a key here (https://coinmarketcap.com/api/)
 RAPIDAPI_KEY= This is another API key that is for the urban dictionary command. You can get one here (https://rapidapi.com/community/api/urban-dictionary)
 ```
 
@@ -73,7 +73,6 @@ Once you have the bot running in your channel you can issue the following comman
 
 * [NodeJs](https://nodejs.org/en/download/) - The javascript framework used
 * [MongoDB-Atlas](https://www.mongodb.com/cloud/atlas) - The cloud database used
-* [btc-value](https://www.npmjs.com/package/btc-value) - The bitcoin API
 * [Urban-Dictionary](https://rapidapi.com/community/api/urban-dictionary) - The Urban Dictionary API
 
 

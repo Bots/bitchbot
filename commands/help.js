@@ -2,6 +2,8 @@ module.exports = {
   name: 'help',
   execute(msg, args) {
     
+    // TODO: dispaly all commands and their responses
+
     // Create a help message when someone types !help
     message = `Bitchbot help:
     To create a command type !addCommand commandName new command goes here
