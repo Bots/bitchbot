@@ -59,8 +59,8 @@ async function run() {
 
     // Shift pops the actual commmand off the array and returns it, leaving only the args,
     // then convert the command to lowercase
-    const discordCommand = args.shift().toLowerCase()
-    
+    let discordCommand = args.shift().toLowerCase()
+
     // See if there is a command file in the commands folder
     if(!bot.commands.has(discordCommand)) {
       try {
