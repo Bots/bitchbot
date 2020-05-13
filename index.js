@@ -99,8 +99,10 @@ async function run() {
 
 checkForUrban = function(discordCommand, msg, args) {
   
+  // Check if command starts with urban or urban#
   if(discordCommand.startsWith('urban') || (discordCommand.startsWith('urban') && hasNumber(discordCommand))) {
     
+    // Try to execute the urban command with the included arguments
     try {
       bot.commands.get('urban').execute(msg, args, discordCommand)
       return true

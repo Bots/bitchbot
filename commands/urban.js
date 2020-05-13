@@ -5,10 +5,11 @@ module.exports = {
  async execute(msg, args, discordCommand) {
   
    const hasNumber = /\d/.test(discordCommand)
+   
+   // If the 'urban' has a number at the end 'urban2' for example
    if(hasNumber) {
-    // The command has a number, we need to strip it into a separate variable
     
-    // Strip the number
+    // Strip the number into a separate variable and put it an array at num[0]
     var num = [discordCommand.match(/\d+/g)]
     
    } else {
@@ -35,7 +36,7 @@ module.exports = {
     // and delete any brackets in the response using a regex (Urban Dictionary inserts weird brackets in the response)
     .then(res => res.list[num[0] - 1].definition.replace(/[[\]]/g,''))
 
-    // Get the first definition and display it in the server
+    // Get the definition and display it in the server
     .then(json => msg.channel.send(json))
     .catch(err => console.error(err)) 
   }
