@@ -62,7 +62,9 @@ async function run() {
     let discordCommand = args.shift().toLowerCase()
 
     // Check if the command is urban or urban#
-    checkForUrban(discordCommand, msg, args)
+    if(checkForUrban(discordCommand, msg, args)) {
+      return 
+    }
 
     // See if there is a command file in the commands folder
     if(!bot.commands.has(discordCommand)) {
@@ -96,13 +98,19 @@ async function run() {
 }
 
 checkForUrban = function(discordCommand, msg, args) {
-  if(discordCommand === 'urban' || discordCommand === /\d/.test(discordCommand)) {
+  
+  if(discordCommand === 'urban' || hasNumber(discordCommand)) {
     
     try {
-      bot.commands.get('urban').execute(msg, discordCommand, args)
+      bot.commands.get('urban').execute(msg, args, discordCommand)
+      return true
     } catch (error) {
       console.error(error)
       msg.reply('There was an error trying to execute that command.')
     }
+  }
+
+  function hasNumber(myString) {
+    return /\d/.test(myString);
   }
 }
