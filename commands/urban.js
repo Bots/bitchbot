@@ -2,8 +2,21 @@ const fetch = require('node-fetch')
 
 module.exports = {
  name: 'urban',
- async execute(msg, args) {
+ async execute(msg, discordCommand, args) {
   
+   const hasNumber = /\d/.test(discordCommand)
+   if(hasNumber) {
+
+    // The command has a number, we need to strip it into a separate variable
+    
+    // Strip the number
+    var num = discordCommand.match(/\d+/g);
+    
+   } else {
+    // No number detected, set num[0] to zero
+    num[0] = 0
+   }
+
   // take the remaining arguments (the query), beginning at zero, 
   // and join them with a %20
   const discordCommandArgs = args.slice(0).join('%20')
@@ -20,7 +33,7 @@ module.exports = {
     .then(response => response.json())
 
     // Get the first definition and delete any brackets in the response using a regex
-    .then(res => res.list[0].definition.replace(/[[\]]/g,''))
+    .then(res => res.list[num[0]].definition.replace(/[[\]]/g,''))
 
     // Get the first definition and display it in the server
     .then(json => msg.channel.send(json))

@@ -61,6 +61,9 @@ async function run() {
     // then convert the command to lowercase
     let discordCommand = args.shift().toLowerCase()
 
+    // Check if the command is urban or urban#
+    checkForUrban(discordCommand, msg, args)
+
     // See if there is a command file in the commands folder
     if(!bot.commands.has(discordCommand)) {
       try {
@@ -90,4 +93,16 @@ async function run() {
       msg.reply('There was an error trying to execute that command.')
     }
   })
+}
+
+checkForUrban = function(discordCommand, msg, args) {
+  if(discordCommand === 'urban' || discordCommand === /\d/.test(discordCommand)) {
+    
+    try {
+      bot.commands.get('urban').execute(msg, discordCommand, args)
+    } catch (error) {
+      console.error(error)
+      msg.reply('There was an error trying to execute that command.')
+    }
+  }
 }
