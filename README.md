@@ -66,7 +66,7 @@ Once you have the bot running in your channel you can issue the following comman
 !btc (Returns the price of bitcoin and the percentage of change over the past day)
 ``` 
 ```
-!urban query goes here (search Urban Dictionary for your query)
+!urban query goes here (search Urban Dictionary for your query) (You can also do !urban2 for the second definition, !urban3 etc...)
 ```
 
 ## Built With
@@ -74,6 +74,7 @@ Once you have the bot running in your channel you can issue the following comman
 * [NodeJs](https://nodejs.org/en/download/) - The javascript framework used
 * [MongoDB-Atlas](https://www.mongodb.com/cloud/atlas) - The cloud database used
 * [Urban-Dictionary](https://rapidapi.com/community/api/urban-dictionary) - The Urban Dictionary API
+* [CoinMarketCap](https://coinmarketcap.com/api/) - The CoinMarketCap API
 
 
 ## Contributing
