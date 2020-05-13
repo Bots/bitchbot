@@ -13,7 +13,7 @@ module.exports = {
     var num = discordCommand.match(/\d+/g)
     
    } else {
-    // No number detected, set num[0] to zero
+    // No number detected, set num[0] to one
     var num = [1]
    }
 
@@ -32,7 +32,8 @@ module.exports = {
     // Change the data to json 
     .then(response => response.json())
 
-    // Get the first definition and delete any brackets in the response using a regex
+    // Get the definition according to the value of num[0](minus one, to offset for 0 based arrays) 
+    // and delete any brackets in the response using a regex (urbanDictionary inserts weird brackets in the response)
     .then(res => res.list[num[0] - 1].definition.replace(/[[\]]/g,''))
 
     // Get the first definition and display it in the server
