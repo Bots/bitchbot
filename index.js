@@ -99,7 +99,7 @@ async function run() {
 
 checkForUrban = function(discordCommand, msg, args) {
   
-  if(discordCommand === 'urban' || hasNumber(discordCommand)) {
+  if(discordCommand.startsWith('urban') || (discordCommand.startsWith('urban') && hasNumber(discordCommand))) {
     
     try {
       bot.commands.get('urban').execute(msg, args, discordCommand)
@@ -107,6 +107,7 @@ checkForUrban = function(discordCommand, msg, args) {
     } catch (error) {
       console.error(error)
       msg.reply('There was an error trying to execute that command.')
+      return false
     }
   }
 

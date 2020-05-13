@@ -6,11 +6,10 @@ module.exports = {
   
    const hasNumber = /\d/.test(discordCommand)
    if(hasNumber) {
-
     // The command has a number, we need to strip it into a separate variable
     
     // Strip the number
-    var num = discordCommand.match(/\d+/g)
+    var num = [discordCommand.match(/\d+/g)]
     
    } else {
     // No number detected, set num[0] to one
@@ -33,7 +32,7 @@ module.exports = {
     .then(response => response.json())
 
     // Get the definition according to the value of num[0](minus one, to offset for 0 based arrays) 
-    // and delete any brackets in the response using a regex (urbanDictionary inserts weird brackets in the response)
+    // and delete any brackets in the response using a regex (Urban Dictionary inserts weird brackets in the response)
     .then(res => res.list[num[0] - 1].definition.replace(/[[\]]/g,''))
 
     // Get the first definition and display it in the server

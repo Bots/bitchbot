@@ -10,9 +10,9 @@
   "author": "John Paul Wile",
   "license": "MIT",
   "dependencies": {
-    "discord.js": "^12.1.1",
+    "discord.js": "^12.2.0",
     "dotenv": "^8.2.0",
-    "mongoose": "^5.9.9",
+    "mongoose": "^5.9.13",
     "node-fetch": "^2.6.0",
     "nodemon": "^2.0.3"
   },
